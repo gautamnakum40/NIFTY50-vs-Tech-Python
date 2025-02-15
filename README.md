@@ -54,13 +54,74 @@ Assess the volatility of key technology stocks, particularly Nvidia, in relation
 Examine the correlation between significant AI breakthroughs and TCS stock performance, emphasizing its role as a leader in AI technology and its impact on the broader tech sector.
 
 ## Project Structure
-1. NIFTY50 Long-Term Trend Analysis
+### 1. NIFTY50 Long-Term Trend Analysis:
    
 [Notebook link](https://github.com/gautamnakum40/Python_NIFTY50vsTECH_Analysis/blob/master/1.%20Nifty50%20Market%20Trend%20Analysis.ipynb)
 
 **Question**: What is the trend of the NIFTY50 over the last 30 years?
 
-Code Snippet: 
+**Code Snippet:** 
+
+```python
+# Read Nifty50 historical data (last 30 years)
+
+nifty50_df = pd.read_csv('nifty_data.csv')
+nifty50_df
+
+# change dtype of date
+nifty50_df['Date'] = pd.to_datetime(nifty50_df['Date'], format='%d-%m-%Y', errors='coerce')
+nifty50_df.dtypes
+
+# Plot the Nifty50  last 30 year trend 
+sns.set_theme(style='ticks')
+
+fig, ax = plt.subplots(figsize = (12, 6))
+
+# Plot the data
+sns.lineplot(data=nifty50_df, x='Date',y='Close',ax=ax, linewidth=2, color='#007acc')
+
+ax.set_title('Nifty50 Long-Term Trend (Last 30 Years)', fontsize=16,fontweight='bold')
+ax.set_xlabel('Year',fontsize=12)
+ax.set_ylabel('Nifty50 Close Price', fontsize=12)
+
+# Format x-axis to show years only
+ax.xaxis.set_major_formatter(plt.matplotlib.dates.DateFormatter('%Y'))  # Show year only
+ax.xaxis.set_major_locator(plt.matplotlib.dates.YearLocator(5)) # 5 year range gap
+
+# Rotate x-axis labels for better readability
+plt.xticks(rotation=45)
+
+# add $ sign to y axis
+ax.yaxis.set_major_formatter(plt.FuncFormatter(lambda x, p: f'₹{x:,.0f}'))
+
+# add gridlines
+ax.grid(True, linestyle='--', alpha=0.7)
+
+plt.tight_layout()
+plt.show()
+```
+
+**Visualization:**
+
+![Nifty50 Long-Term Trend (Last 30 Years)](https://github.com/gautamnakum40/Python_NIFTY50vsTECH_Analysis/blob/master/Plots/Nifty50%20Market%20Trend%20Analysis.png)
+
+**Insights:**
+   - The NIFTY50 has exhibited an overall upward trend over the last 30 years.
+   - Sharp declines are visible during major economic downturns, such as the Dot-com Bubble (2000) and the 2008 Financial Crisis, but recovery was steady. 
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
