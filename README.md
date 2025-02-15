@@ -55,6 +55,13 @@ Examine the correlation between significant AI breakthroughs and TCS stock perfo
 
 ## Project Structure
 1. NIFTY50 Long-Term Trend Analysis
+   
+[Notebook link](https://github.com/gautamnakum40/Python_NIFTY50vsTECH_Analysis/blob/master/1.%20Nifty50%20Market%20Trend%20Analysis.ipynb)
+
+**Question**: What is the trend of the NIFTY50 over the last 30 years?
+
+Code Snippet: 
+
 
 
 
