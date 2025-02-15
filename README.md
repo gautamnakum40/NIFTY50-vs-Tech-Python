@@ -146,7 +146,7 @@ df_returns['Cumulative'] = (1 + df_returns['Return'] / 100).cumprod() - 1
 
 **Question:** How did the majot technological milestones such as rise of internet, smartphones, AI affected NIFTY50?
 
- Code Snippet:
+ **Code Snippet:**
  
  ```python
  # Defining major technological milestones
@@ -180,7 +180,185 @@ for year, event, color in milestones:
 **Insights:**
 
    - The introduction of the Rise of the Internet (1999) and Smartphone Revolution (2010) marked the beginning of significant market shifts.
-   - The Upi Boom (2020) and Rise of AI (2023) caused even more rapid growth, particularly after 2016.  
+   - The Digital Transformation (2021) and Rise of AI (2023) caused even more rapid growth, particularly after 2016.  
+
+### 2. Impact of Technological Advancements on NIFTY50
+
+[Notebook link](https://github.com/gautamnakum40/Python_NIFTY50vsTECH_Analysis/blob/master/2.%20Impact%20of%20Technology.ipynb)
+
+### 2.1 Technology Sector Outperformance
+
+**Question**: How has the technology sector outperformed the NIFTY50? 
+
+**Code Snippet:**
+
+```python
+# first we need to fetch data from csv file.
+it_df = pd.read_csv("Nifty IT Historical Data.csv")
+
+# Nifty 50 data from 2003-09-01 for comparison with Nifty IT index.
+df = pd.read_csv('nifty_data.csv')
+
+# for normilization divide the closing value with the starting close value of the index as it helps to compare percentage change of the closing price of both index over time.
+nifty_df['Normalized_Close'] = nifty_df['Close'] / nifty_df['Close'].iloc[0]
+it_df['Normalized_Close'] = it_df['Close'] / it_df['Close'].iloc[0]
+
+# now we can graph the comparison
+plt.figure(figsize=(12, 7))
+sns.lineplot(data=nifty_df, x='Date', y='Normalized_Close', label='Nifty 50', color='royalblue')
+sns.lineplot(data=it_df, x='Date', y='Normalized_Close', label='Nifty IT', color='darkorange')
+
+plt.title('Nifty50 vs Nifty IT Sector Performance (Last 25 Years)', fontsize=16, fontweight='bold')
+plt.xlabel('Year', fontsize=12)
+plt.ylabel('Normalized Price', fontsize=12)
+
+plt.legend(fontsize=10)
+
+plt.xticks(rotation=45)
+
+plt.tight_layout()
+plt.show()
+```
+**Visualization:**
+
+![Nifty50 vs Nifty IT Sector Performance (Last 25 Years)](https://github.com/gautamnakum40/Python_NIFTY50vsTECH_Analysis/blob/master/Plots/Nifty50%20vs%20Nifty%20IT%20Sector%20Performance.png)
+
+**Insights:**
+
+  - From the graph we can clerly see that technology sector has dramatically outperformed Nifty50 especially since 2017-2018 which would be the start of the Rise of Digital Transformations and AI in Country.
+    
+### 2.2 IT BIG Stocks vs NIFTY50
+
+**Question:** What is the impact of FAANG stocks on the market? 
+
+**Code Snippet:**
+
+```python 
+import yfinance as yf # for fetch data from yahoo finance.
+
+# created a fn to fetch data
+def fetch_data(ticker, start_date, end_date):
+    return yf.download(ticker, start=start_date, end=end_date)['Close']
+
+# Set date range(Available Max data on yfinance )
+start_date = '2007-10-01'
+end_date = '2025-01-23'
+
+# list of tech companies and their tickers
+tech_companies = {
+'TCS' : 'TCS.NS',
+'Infosys' : 'INFY.NS',
+'HCLTech' : 'HCLTECH.NS' ,
+'Wipro' : 'WIPRO.NS',
+'Tech Mahindra' : 'TECHM.NS'
+}
+
+# Download data
+tiwht = pd.DataFrame()
+for company, ticker in tech_companies.items():
+    tiwht[company] = fetch_data(ticker, start_date, end_date)
+tiwht['NIFTY50'] = fetch_data('^NSEI', start_date, end_date)    
+  
+# Calculate cumulative returns- because there are different satrt date for different companies so this is prefered for normalization
+cumulative_returns = (1 + tiwht.pct_change()).cumprod()
+```
+**Visualization:**
+
+![NIFTY50 vs IT Big Stocks Cumulative Return](https://github.com/gautamnakum40/Python_NIFTY50vsTECH_Analysis/blob/master/Plots/NIFTY50%20vs%20IT%20Big%20Stocks%20Cumulative%20Returns.png)
+
+**Insights:**
+
+   - IT BIG Stocks have significantly outpaced the NIFTY50 in terms of cumulative returns.
+
+### 3. Volatility Analysis of Tech Stocks:
+
+[Notebook link](https://github.com/gautamnakum40/Python_NIFTY50vsTECH_Analysis/blob/master/3.%20Volatility%20Analysis.ipynb)
+
+**Question:** How volatile are tech stocks compared to the NIFTY50 ?
+
+**Code Snippet:**
+
+```python 
+# Calculating daily returns
+returns = tiwht.pct_change().dropna()
+
+# Defining rolling window size (1 year = 252 trading days)
+rolling_window = 252
+
+# Calculating rolling volatility (annualized) for each company and nifty 50
+rolling_volatility = returns.rolling(window=rolling_window).std() * np.sqrt(252)
+```
+
+**Visualization:**
+
+![Distribution of Daily Returns: Tech Giants vs NIFTY50](https://github.com/gautamnakum40/Python_NIFTY50vsTECH_Analysis/blob/master/Plots/Distribution%20of%20Daily%20Returns%20Tech%20Giants%20vs%20NIFTY50.png)
+
+![Rolling Annualized Volatility (1-year Window)](https://github.com/gautamnakum40/Python_NIFTY50vsTECH_Analysis/blob/master/Plots/Rolling%20Annualized%20Volatility%20(1-year%20Window).png)
+
+**Insights:**
+
+TCS & Tech Mahindra shows the widest spread, suggesting it has the highest volatility among the listed stocks. other tech companies are also more volitily as compared to NIFTY50 which is more smaller box and more closely spread.
+
+### 4. AI Revolution and Nvidia’s Performance:
+
+[Notebook link](https://github.com/gautamnakum40/Python_NIFTY50vsTECH_Analysis/blob/master/4.%20AI%20Revolution%20and%20Its%20Impact.ipynb)
+
+**Question:** How has the AI revolution affected TCS’s Stock ?
+
+**Code Snippet:**
+
+```pyhon
+# Download TCS stock data from Yahoo Finance
+tcs = yf.Ticker('TCS.NS')
+tcs_data = tcs.history(start='2011-01-01')
+
+# AI-related breakthrough dates
+ai_breakthroughs = [    
+    ('2012-10-01', 'Ignio AI Platform Introduced', 'orange'),
+    ('2019-03-01', 'Machine First Delivery Model (MFDM) Unveiled', 'purple'),
+    ('2020-09-01', 'TCS AI Cloud Partnership with Microsoft', 'green'),
+    ('2023-07-01', 'TCS Expands AI-Driven Consulting with Google Cloud', 'yellow'),
+    ('2024-01-01', 'TCS AI Lab Established for Generative AI Solutions', 'cyan')
+]
+
+# Ploting TCS stock price
+plt.figure(figsize=(14, 7))
+plt.plot(tcs_data.index, tcs_data['Close'], label='TCS Stock Price')
+
+# Annotate AI breakthroughs
+
+for date, event, c in ai_breakthroughs:
+    plt.axvline(pd.to_datetime(date), color=c, linestyle='--', label=event)
+    
+
+plt.title('TCS Stock Performance with Key AI Breakthroughs')
+plt.xlabel('Year')
+plt.ylabel('Stock Price(INR)')
+plt.grid(True)
+plt.legend()
+plt.show()
+```
+
+**Visualization:**
+
+![TCS Stocks Performance](https://github.com/gautamnakum40/Python_NIFTY50vsTECH_Analysis/blob/master/Plots/TCS%20Stock%20Performance%20with%20Key%20AI%20Breakthroughs.png)
+
+**Insights:** 
+     - TCS's stock saw rapid growth following MFDM (2019) and TCS Expands AI Driven Consulting with Google Cloud (2023), highlighting its leading role in indian AI.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
