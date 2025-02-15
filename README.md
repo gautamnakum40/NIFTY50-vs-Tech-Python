@@ -109,19 +109,78 @@ plt.show()
    - The NIFTY50 has exhibited an overall upward trend over the last 30 years.
    - Sharp declines are visible during major economic downturns, such as the Dot-com Bubble (2000) and the 2008 Financial Crisis, but recovery was steady. 
    
+### 1.2 Yearly and Cumulative Returns of NIFTY50:
+
+**Question:** What are the yearly returns of the NIFTY50, and how has cumulative growth evolved?
+
+**Code Snippet:**
+```python
+# Extract the year from the 'Date' column
+nifty50_df['Year'] = nifty50_df['Date'].dt.year
+
+# Calculate yearly returns
+nifty50_df['Yearly Return'] = nifty50_df['Close'].pct_change(252) * 100  # cause there are usually 252 trading days in a year
+
+# Group by year and get the last closing price of each year
+yearly_returns = nifty50_df.groupby('Year')['Yearly Return'].last()
+
+# Create a df for returns
+df_returns = yearly_returns.reset_index()
+df_returns.columns = ['Year','Return']
+
+# calculate cumulative returns
+df_returns['Cumulative'] = (1 + df_returns['Return'] / 100).cumprod() - 1
+```
+
+**Visualization:**
+
+![Nifty50 Yearly Returns and Cumulative Growth (Last 30 Years)](https://github.com/gautamnakum40/Python_NIFTY50vsTECH_Analysis/blob/master/Plots/yearly%20return%20%20of%20the%20Nify50%20over%20last%2030%20years.png)
+
+**Insights**
+
+ - Best Year:: The highest annual return for the NIFTY50 was in 2009 with over 74% growth.
+ - Worst Year:: In 2008, the market experienced a sharp decline of -48%.
+ - Cumulative Growth:: Over the last 30 years, the NIFTY50's cumulative growth exceeded 3940%.
+
+### 1.3 Technology Milestones and NIFTY50:
+
+**Question:** How did the majot technological milestones such as rise of internet, smartphones, AI affected NIFTY50?
+
+ Code Snippet:
+ 
+ ```python
+ # Defining major technological milestones
+
+milestones = [
+     (1999, 'Rise of the Internet', 'blue'),
+     (2007,'iphone launch', 'black'),
+     (2010, 'Smartphone Revolution', 'green'),
+     (2020,'Upi Boom','orange'),
+     (2021, 'Digital Transformation', 'brown'),
+     (2023, 'Rise of AI', 'purple')
+             
+]
 
 
+# Plotting technological milestones on the S&P 500 graph
+for year, event, color in milestones:
+    if year in nifty50_df['Date'].dt.year:
+        price = nifty50_df.loc[nifty50_df['Date'].dt.year == year, 'Close'].values[0]
+        plt.annotate(event, (mdates.date2num(pd.Timestamp(f'{year}-01-01')), price), xytext=(10, 10), 
+                     textcoords='offset points', ha='left', va='bottom',
+                     bbox=dict(boxstyle='round,pad=0.5', fc='yellow', alpha=0.5),
+                     arrowprops=dict(arrowstyle='->', connectionstyle='arc3,rad=0', color=color),
+                     fontsize=10, color=color)
+```
 
+**Visualization:**
 
+![Nifty50 Performance and Major Technological Milestones (Last 30 Years)](https://github.com/gautamnakum40/Python_NIFTY50vsTECH_Analysis/blob/master/Plots/Nifty50%20Performance%20and%20Major%20Technological%20Milestones%20(Last%2030%20Years).png)
 
+**Insights:**
 
-
-
-
-
-
-
-
+   - The introduction of the Rise of the Internet (1999) and Smartphone Revolution (2010) marked the beginning of significant market shifts.
+   - The Upi Boom (2020) and Rise of AI (2023) caused even more rapid growth, particularly after 2016.  
 
 
 
