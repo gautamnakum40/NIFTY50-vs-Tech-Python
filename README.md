@@ -53,7 +53,7 @@ Assess the volatility of key technology stocks, particularly Nvidia, in relation
 
 Examine the correlation between significant AI breakthroughs and TCS stock performance, emphasizing its role as a leader in AI technology and its impact on the broader tech sector.
 
-## Project Structure
+## Exploratory Data Analysis (EDA)
 ### 1. NIFTY50 Long-Term Trend Analysis:
    
 [Notebook link](https://github.com/gautamnakum40/Python_NIFTY50vsTECH_Analysis/blob/master/1.%20Nifty50%20Market%20Trend%20Analysis.ipynb)
