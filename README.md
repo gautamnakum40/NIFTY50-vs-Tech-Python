@@ -354,25 +354,25 @@ This analysis examines the influence of technological advancements on the NIFTY5
 
 **Finidngs:** Over the past five decades, the NIFTY50 has shown steady growth, with cumulative gains surpassing 4000%. Significant drops occurred during the Dot-com Bubble (2000) and the 2008 Financial Crisis, but the index rebounded each time.
 
-**Recommendation:** Long-term investors should remain invested through market downturns, as historical data indicates that markets recover and continue upward over time.
+> **Recommendation:** Long-term investors should remain invested through market downturns, as historical data indicates that markets recover and continue upward over time.
 
 #### Technology Sector Outperformance
 
 **Finidngs:** The technology sector, particularly through the XLK ETF, has outperformed the broader S&P 500 since 2016, driven by advancements in AI. FAANG stocks, in particular, have delivered significantly higher cumulative returns.
 
-**Recommendation:** Consider allocating a portion of your investment portfolio to tech-focused ETFs or individual FAANG stocks, especially during periods of technological innovation, to capture potential superior long-term returns.
+> **Recommendation:** Consider allocating a portion of your investment portfolio to tech-focused ETFs or individual FAANG stocks, especially during periods of technological innovation, to capture potential superior long-term returns.
 
 **Volatility in Tech Stocks**
 
 **Findings:** Tech stocks, notably TCS, have exhibited greater volatility than the NIFTY50, with TCS experiencing annualized volatility of more than 50% during periods of AI-related advancements.
 
-**Recommendation:** While Tech stocks offer higher growth potential, they also carry more risk. Investors should diversify their portfolios or use risk management techniques like stop-loss orders to manage potential Volatility.
+> **Recommendation:** While Tech stocks offer higher growth potential, they also carry more risk. Investors should diversify their portfolios or use risk management techniques like stop-loss orders to manage potential Volatility.
 
 **AI Revolution:**
 
 **Finidngs:** TCS’s stock experienced substantial growth following major AI milestones, such as the MFDM (2019) and TCS Expands AI Driven Consulting with Google Cloud (2023), highlighting its leading role in indian AI., resulting in over a 300% increase in stock value from 2016 to 2023.
 
-**Recommendation:** Investors seeking to capitalize on the AI revolution should focus on companies at the forefront of AI development, such as TCS. Given the volatility, it's important to carefully time entry and exit strategies to mitigate risks.
+> **Recommendation:** Investors seeking to capitalize on the AI revolution should focus on companies at the forefront of AI development, such as TCS. Given the volatility, it's important to carefully time entry and exit strategies to mitigate risks.
 
 
 
