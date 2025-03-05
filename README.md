@@ -358,9 +358,9 @@ This analysis examines the influence of technological advancements on the NIFTY5
 
 #### Technology Sector Outperformance
 
-**Finidngs:** The technology sector, particularly through the XLK ETF, has outperformed the broader S&P 500 since 2016, driven by advancements in AI. FAANG stocks, in particular, have delivered significantly higher cumulative returns.
+**Finidngs:** The technology sector, has outperformed the broader NIFTY50 since 2016, driven by advancements in AI. BIG Tech stocks, in particular, have delivered significantly higher cumulative returns.
 
-> **Recommendation:** Consider allocating a portion of your investment portfolio to tech-focused ETFs or individual FAANG stocks, especially during periods of technological innovation, to capture potential superior long-term returns.
+> **Recommendation:** Consider allocating a portion of your investment portfolio to tech-focused Index or individual Tech stocks, especially during periods of technological innovation, to capture potential superior long-term returns.
 
 **Volatility in Tech Stocks**
 
